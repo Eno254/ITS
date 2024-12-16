@@ -1,0 +1,127 @@
+﻿@model IEnumerable<ITS.Models.Issue>
+@{
+    ViewData["Title"] = "Issue List";
+}
+<style>
+    :root {
+        --background-image: url('../untitled .jpg');
+        --header-bg: rgba(0, 0, 0, 0.5);
+        --header-color: #fff;
+        --link-bg: darkslategray;
+        --link-bg-hover: #005f5f;
+        --card-bg: rgba(255, 255, 255, 0.8);
+        --card-shadow: rgba(0, 0, 0, 0.2);
+        --btn-primary-bg: #007bff;
+        --btn-primary-bg-hover: #0056b3;
+        --text-color: #333;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-image: var(--background-image);
+        background-size: cover;
+        background-position: center;
+        font-family: 'Arial', sans-serif;
+        color: var(--text-color);
+        min-height: 100vh; /* Ensure full height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Align items to the top */
+    }
+
+    /* Issues Container */
+    .issues-container {
+        width: 100%; /* Full width */
+        padding: 10px; /* Add padding */
+    }
+
+    /* Header */
+    header {
+        text-align: center;
+        padding: 20px;
+        background-color: var(--header-bg);
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        color: var(--header-color);
+    }
+
+    /* Link Styles */
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--link-bg);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+        margin: 10px 0; /* Add margin for spacing */
+    }
+
+        a:hover {
+            background-color: var(--link-bg-hover); /* Change hover color */
+        }
+
+    /* Card Layout for Issues */
+    .issue-card {
+        background-color: var(--card-bg);
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 10px var(--card-shadow); /* Shadow for depth */
+        margin: 10px; /* Space between cards */
+        padding: 10px; /* Reduced padding */
+        transition: transform 0.2s; /* Smooth scaling effect */
+        width: 200px; /* Fixed width for cards */
+        max-width: 90%; /* Ensure cards are responsive */
+    }
+
+        .issue-card:hover {
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+
+    /* Button Styles */
+    .btn-primary {
+        background-color: var(--btn-primary-bg);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 20px 0; /* Margin for spacing */
+    }
+
+        .btn-primary:hover {
+            background-color: var(--btn-primary-bg-hover); /* Darker shade on hover */
+        }
+</style>
+ 
+<header>
+    <h2>Issues</h2>
+    <a href="/Issues/Create">Create New Issue</a>
+</header>
+
+<a href="/" class="btn btn-primary">Back to Home</a>
+
+<div class="issues-container" style="display: flex; flex-wrap: wrap; justify-content: center; width: 100%;background-image:images/crescent_moon_in_starry_sky-wallpaper-1920x1080.jpg;">
+
+    @foreach (var issue in Model)
+    {
+        <div class="issue-card">
+            <h3>@issue.Title</h3>
+            <p>@issue.Description</p>
+            <p>Status: @issue.Status</p>
+            <div>
+                <a href="/Issues/Edit/@issue.Id">Edit</a>
+                <a href="/Issues/Delete/@issue.Id">Delete</a>
+            </div>
+        </div>
+    }
+</div>

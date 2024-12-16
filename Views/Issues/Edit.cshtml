@@ -1,0 +1,129 @@
+﻿@model ITS.Models.Issue
+ 
+<h2>Edit Issue</h2>
+<style>
+    body {
+        background-image: url('../images/crescent_moon_in_starry_sky-wallpaper-1920x1080.jpg');
+        font-family: Arial, sans-serif;
+        background-size: cover; /* Cover the entire page */
+        background-position: center; /* Center the background image */
+        margin: 0; /* Remove default margin */
+        height: 100vh; /* Full height of the viewport */
+        display: flex; /* Use flexbox to center the form */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+        max-width: 500px; /* Limit the width of the form */
+        width: 100%; /* Make it responsive */
+        margin: 20px; /* Add some margin around the form */
+    }
+
+    div {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555; /* Darker gray for labels */
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensures padding is included in width */
+    }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus,
+        input[type="date"]:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; /* Full width button */
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    span {
+        color: red;
+        font-size: 0.875em; /* Smaller font size for validation messages */
+    }
+
+    /* Optional: Style for the back button */
+    .btn-secondary {
+        display: block;
+        margin: 20px auto; /* Center the button */
+        text-align: center;
+        padding: 10px 15px;
+        background-color: #6c757d; /* Bootstrap secondary color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none; /* Remove underline */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker on hover */
+        }
+</style>
+<body>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label>Title</label>
+        <input asp-for="Title" required />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea asp-for="Description" required></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label>Status</label>
+        <select asp-for="Status" required>
+            <option value="">Select Status</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+        </select>
+        <span asp-validation-for="Status"></span>
+    </div>
+    <button type="submit">Update Issue</button>
+</form>
+
+<a href="/Issues/Index" class="btn-secondary">Back to Issues</a>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.Message
+    </div>
+}
+</body>

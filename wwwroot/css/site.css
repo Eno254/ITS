@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    color: #333; /* Dark text for readability */
+}
+
+/* Container */
+.container {
+    max-width: 1200px; /* Limit the width for larger screens */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add padding */
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5rem; /* Larger heading */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 10px 20px; /* Padding for buttons */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary color */
+    color: #fff; /* White text */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+.btn-warning {
+    background-color: #ffc107; /* Warning color */
+    color: #212529; /* Dark text */
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800; /* Darker shade on hover */
+    }
+
+.btn-danger {
+    background-color: #dc3545; /* Danger color */
+    color: #fff; /* White text */
+}
+
+    .btn-danger:hover {
+        background-color: #c82333; /* Darker shade on hover */
+    }
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    gap: 10px; /* Space between grid items */
+    margin-top: 20px; /* Space above the grid */
+}
+
+/* Grid Header */
+.grid-header {
+    font-weight: bold; /* Bold text for headers */
+    background-color: #007bff; /* Header background color */
+    color: white; /* White text */
+    padding: 10px; /* Padding for headers */
+    text-align: center; /* Center text */
+}
+
+/* Grid Item */
+.grid-item {
+    background-color: #f8f9fa; /* Light background for items */
+    padding: 10px; /* Padding for items */
+    border: 1px solid #dee2e6; /* Border for items */
+    text-align: center; /* Center text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons on small screens */
+        margin-bottom: 10px; /* Space between buttons */
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+
+    .grid-header {
+        font-size: 0.9rem; /* Smaller font size for headers */
+    }
+
+    .grid-item {
+        font-size: 0.9rem; /* Smaller font size for items */
+    }
+}
